@@ -1,21 +1,46 @@
-import random
+import secrets
 
-characters = ['q', 'w', 'e', 'r', 't', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f',
-              'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Q',
-              'W', 'E', 'R', 'T', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G',
-              'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '0',
-              '1', '2', '3', '4', '5', '6', '7', '8', '9', '~', '`', '!',
-              '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '-',
-              '+', '=', '{', '[', '}', ']', '|', '\\', ':', ';',
-              '\"', '\'', '<', '>', '.', '?', '/', ',']
+lowercase_chars = 'abcdefghijklmnopqrstuvwxyz'
+uppercase_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+numbers = '0123456789'
+special_chars = '~`!@#$%^&*()_-+={[}]|\\:;\"\'<,>.?/'
 
-password = []
+chars = lowercase_chars + uppercase_chars + numbers + special_chars
 
-for i in range(16):
-    ran_char = random.choice(characters)
-    password.append(ran_char)
+def generate_password(length):
 
-final_password = ''.join(map(str,password))
+    password = [secrets.choice(lowercase_chars),
+                secrets.choice(uppercase_chars),
+                secrets.choice(numbers),
+                secrets.choice(special_chars)]
+    
+    for i in range(length - 4):
+        password.append(secrets.choice(chars))
+    
+    secrets.SystemRandom().shuffle(password)
 
-print(final_password)
+    return ''.join(password)
 
+print("-" * 55)
+print("Welcome to your personal and secure password generator!")
+print("-" * 55)
+
+def get_length():
+    while True:
+        try:
+            length = int(input("How long would you like your password to be: "))
+            if length < 0:
+                print("Please enter a positive number!")
+                print()
+            elif length < 8:
+                print("For a secure password, you must have at least 8 characters!")
+                print()
+            else:
+                return length
+        except ValueError:
+            print("Please input a number!")
+            print()
+        except:
+            print("Something went wrong, please try again!")
+
+print("Here is your password: " + generate_password(get_length()))
