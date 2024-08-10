@@ -21,14 +21,11 @@ def generate_password(length):
 
     return ''.join(password)
 
-print("-" * 55)
-print("Welcome to your personal and secure password generator!")
-print("-" * 55)
-
 def get_length():
     while True:
         try:
             length = int(input("How long would you like your password to be: "))
+            print()
             if length < 0:
                 print("Please enter a positive number!")
                 print()
@@ -38,9 +35,46 @@ def get_length():
             else:
                 return length
         except ValueError:
+            print()
             print("Please input a number!")
             print()
         except:
             print("Something went wrong, please try again!")
 
-print("Here is your password: " + generate_password(get_length()))
+def welcome():
+    print("-" * 55)
+    print("Welcome to your personal and secure password generator!")
+    print("-" * 55)
+    print()
+
+def display_password(length):
+    print("Here is your password: " + generate_password(length))
+    print()
+
+def regenerate():
+    while True:
+        answer = input("Would you like to generate a new password (y/n)? ").lower()
+        print()
+        if answer not in ['y', 'n']:
+            print("Please chose between 'y' or 'n'!")
+            print()
+        else:
+            return answer == 'y'
+        
+def end_message():
+    print("Thanks for using our tool :)")
+
+def start():
+    welcome()
+    while True:
+        length = get_length()
+        display_password(length)
+        if regenerate():
+            continue
+        else:
+            end_message()
+            return
+        
+
+start()
+
