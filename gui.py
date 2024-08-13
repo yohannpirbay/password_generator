@@ -3,7 +3,10 @@ from tkinter import messagebox
 from password_logic import generate_password
 from pyperclip import copy
 
+# Class that handles the GUI for the application
 class MyGUI:
+
+    # Creates the window
     def __init__(self):
         self.root = tk.Tk()
         self.root.title("Password Generator")
@@ -35,6 +38,7 @@ class MyGUI:
 
         self.root.mainloop()
     
+    # Genereates a password based on the length indicated by the user and updates the display
     def on_generate_password(self):
         length = int(self.length_slider.get())
         generated_password = generate_password(length)
@@ -43,9 +47,11 @@ class MyGUI:
         self.password_display.insert(0, generated_password)
         self.password_display.config(state="readonly")
     
+    # Copies the generated password to the clipboard.
     def on_copy(self):
         copy(self.password_display.get())
 
+# Starts the application
 def run():
     MyGUI()
 

@@ -1,25 +1,28 @@
 # We use secrets instead of random as it is preferred when generating passwords
 import secrets
 
-# Character sets
-lowercase_chars = 'abcdefghijklmnopqrstuvwxyz'
-uppercase_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-numbers = '0123456789'
-special_chars = '~`!@#$%^&*()_-+={[}]|\\:;\"\'<,>.?/'
+# Class that handles the logic of password generation
+class PasswordLogic:
 
-chars = lowercase_chars + uppercase_chars + numbers + special_chars
+    # Character sets
+    lowercase_chars = 'abcdefghijklmnopqrstuvwxyz'
+    uppercase_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    numbers = '0123456789'
+    special_chars = '~`!@#$%^&*()_-+={[}]|\\:;\"\'<,>.?/'
 
-# Generates a password of given length
-def generate_password(length):
+    chars = lowercase_chars + uppercase_chars + numbers + special_chars
 
-    password = [secrets.choice(lowercase_chars),
-                secrets.choice(uppercase_chars),
-                secrets.choice(numbers),
-                secrets.choice(special_chars)]
-    
-    for i in range(length - len(password)):
-        password.append(secrets.choice(chars))
-    
-    secrets.SystemRandom().shuffle(password)
+    # Generates a password of given length
+    def generate_password(length):
 
-    return ''.join(password)
+        password = [secrets.choice(lowercase_chars),
+                    secrets.choice(uppercase_chars),
+                    secrets.choice(numbers),
+                    secrets.choice(special_chars)]
+        
+        for i in range(length - len(password)):
+            password.append(secrets.choice(chars))
+        
+        secrets.SystemRandom().shuffle(password)
+
+        return ''.join(password)
