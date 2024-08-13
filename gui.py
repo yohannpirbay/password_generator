@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-from password_logic import generate_password
+from  password_logic import generate_password
 from pyperclip import copy
 
 # Class that handles the GUI for the application
