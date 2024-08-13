@@ -9,14 +9,16 @@
 - Has a compy to clipboard function for ease of use
 
 ## Screenshots
-![Main screen](main_screen.png)
+![Main screen](images/main_screen.png)
 *Main screen of the application*
 
-![Password successfully generated](generated_password.png)
+![Password successfully generated](images/generated_password.png)
 *16 characters password successfully generated*
 
 ## How to Use
- Clone the repository: 
+- Prerequisites: Ensure you have Python installed on your system, along with the 'tkinter' library, which is necessary for the GUI to function. `Tkinter` typically comes pre-installed with Python, but if it's missing, you may need to install it separately.
+
+Clone the repository: 
  ```
 $ git clone https://github.com/yohannpirbay/password_generator.git
 ```
@@ -27,7 +29,7 @@ cd password_generator
 
 Create a virtual environment: 
 ```
-virtualenv venv
+python3 -m venv venv
 ```
 
 Activate the virtual environment: 
@@ -46,7 +48,7 @@ python3 main.py
 ```
 
 ## Sources
-The packages used by this application are specified in `requirements.txt`
+The packages used by this application are specified in `requirements.txt`.
 
 ## Author
 - Yohann Pirbay
