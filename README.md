@@ -9,10 +9,10 @@
 - Has a compy to clipboard function for ease of use
 
 ## Screenshots
-![Main screen](image-2.png)
+![Main screen](main_screen.png)
 *Main screen of the application*
 
-![Password successfully generated](image-1.png)
+![Password successfully generated](generated_password.png)
 *16 characters password successfully generated*
 
 ## How to Use
